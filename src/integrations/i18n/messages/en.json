@@ -1,0 +1,17 @@
+{
+  "global": {
+    "header": {
+      "bannerAppTitle": "Cameroon Child Rights Resource Center",
+      "searchPlaceholder": "Search Resource...",
+      "allBooks": "All Books"
+    },
+    "sidebar": {
+      "categoriesFacetsTitle": "Categories"
+    }
+  },
+  "books": {
+    "readOnlineBtn": "Read Online",
+    "downloadBtn": "Download",
+    "noResults": "No results found."
+  }
+}

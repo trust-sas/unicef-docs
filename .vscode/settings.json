@@ -36,5 +36,9 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
     }
-  }
+  },
+  "i18n-ally.localesPaths": [
+    "src/integrations/i18n",
+    "src/integrations/i18n/messages"
+  ]
 }

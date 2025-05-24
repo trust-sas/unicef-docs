@@ -1,0 +1,17 @@
+{
+  "global": {
+    "header": {
+      "bannerAppTitle": "Centre de Ressources sur les Droits de l'Enfant au Cameroun",
+      "searchPlaceholder": "Cherchez une ressource...",
+      "allBooks": "Tous les livres"
+    },
+    "sidebar": {
+      "categoriesFacetsTitle": "Catégories"
+    }
+  },
+  "books": {
+    "readOnlineBtn": "Lire en ligne",
+    "downloadBtn": "Télécharger",
+    "noResults": "Aucun résultat trouvé."
+  }
+}

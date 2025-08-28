@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extraction de texte PDF</title>
+</head>
+<body>
+    <input type="file" id="file-input" accept="application/pdf">
+    <button id="extract-button">Extraire le texte</button>
+    <pre id="output"></pre>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script>
+        document.getElementById('extract-button').addEventListener('click', function() {
+            const fileInput = document.getElementById('file-input');
+            const output = document.getElementById('output');
+
+            if (fileInput.files.length === 0) {
+                output.textContent = 'Veuillez sélectionner un fichier PDF.';
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const fileReader = new FileReader();
+
+            fileReader.onload = function() {
+                const typedarray = new Uint8Array(this.result);
+
+                pdfjsLib.getDocument(typedarray).promise.then(pdf => {
+                    let textPromises = [];
+
+                    for (let i = 1; i <= pdf.numPages; i++) {
+                        textPromises.push(pdf.getPage(i).then(page => {
+                            return page.getTextContent().then(textContent => {
+                                return textContent.items.map(item => item.str).join(' ');
+                            });
+                        }));
+                    }
+
+                    Promise.all(textPromises).then(pagesText => {
+                        output.textContent = pagesText.join('\n');
+                    });
+                });
+            };
+
+            fileReader.readAsArrayBuffer(file);
+        });
+    </script>
+</body>
+</html>
